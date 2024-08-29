@@ -7,7 +7,7 @@
 var timeRequiredToBuy = function(tickets, k) {
     // 1 - check if tickets is greater then 0 
     // 2 - add time each while
-    // 3 - drement tickets each while
+    // 3 - drecrement tickets each while
     // 4 - check if tickets in position of k is equal 0
 
     let time = 0;
