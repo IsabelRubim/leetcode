@@ -21,3 +21,24 @@ var twoSum = function(numbers, target) {
         if (sum > target) right--;
     }
 };
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function(s) {
+    const phrase = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+    let left = 0;
+    let right = phrase.lastIndexOf(phrase[phrase.length - 1]);
+
+    while (left < phrase.length) {
+        if (phrase[left] && phrase[right] && phrase[left] !== phrase[right]) {
+            return false;
+        }
+ 
+        left++;
+        right--;
+    }
+
+    return true;
+};
