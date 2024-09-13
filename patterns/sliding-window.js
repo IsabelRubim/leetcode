@@ -46,3 +46,22 @@ var lengthOfLongestSubstring = function(s) {
 
     return maxSize;
 };
+
+/**
+ * @param {number} num
+ * @param {number} k
+ * @return {number}
+ */
+var divisorSubstrings = function(num, k) {
+    const numToString = num.toString();
+
+    let countDivisors = 0;
+
+    for (let i = 0; i <= numToString.length - k; i++) {
+        let subNum = parseInt(numToString.slice(i, k + i));
+
+        if (num % subNum === 0) countDivisors++;
+    }
+
+    return countDivisors;
+};
