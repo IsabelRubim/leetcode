@@ -18,3 +18,42 @@ var dailyTemperatures = function(temperatures) {
 
     return answer;
 };
+
+// https://leetcode.com/problems/132-pattern/
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var find132pattern = function(nums) {
+    // Brute force - time limit exceeded
+    // if (!nums.length) return false;
+	
+	// for (let i = 0; i < nums.length - 2; i++) {
+	// 	for (let j = i + 1; j < nums.length - 1; j++) { 
+	// 		for (let k = j + 1; k < nums.length; k++) { 
+	// 			if (nums[i] < nums[k] && nums[k] < nums[j]) {
+    //                 return true;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+    // return false;
+
+    let least = -Infinity;
+
+    const aux = [];
+
+    for (let i = nums.length - 1; i >= 0; i--) {
+        if (nums[i] < least) return true;
+
+        while (aux.length > 0 && nums[i] > aux[aux.length - 1]) {
+            least = aux.pop();
+        }
+
+        aux.push(nums[i]);
+    }
+
+    return false;
+};
