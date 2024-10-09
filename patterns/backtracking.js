@@ -57,3 +57,37 @@ var combine = function(n, k) {
 
     return result;
 };
+
+// https://leetcode.com/problems/generate-parentheses/description
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function(n) {
+    const result = [];
+    const stack = [];
+
+    const backTrack = (countOpen, countClosed) => {
+        
+        if (countOpen === n && countClosed === n) {
+            result.push(stack.join(''));
+            return;
+        }
+        
+        if (countOpen < n) {
+            stack.push('(');
+            backTrack(countOpen + 1, countClosed);   
+            stack.pop();
+        }
+        
+        if (countClosed < countOpen) {
+            stack.push(')');
+            backTrack(countOpen, countClosed + 1);
+            stack.pop();
+        }
+    }
+
+    backTrack(0, 0);
+
+    return result;
+};
